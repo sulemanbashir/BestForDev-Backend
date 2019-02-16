@@ -3,33 +3,22 @@ module.exports = {
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["plugin:prettier/recommended"],
     "parserOptions": {
         "ecmaVersion": 2016
     },
     "rules": {
-        "arrow-parens": [
+        "prettier/prettier": [
             "error",
-            "as-needed"
-        ],
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
-        "no-console": [
-            "off"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "never"
+            {
+                "singleQuote": true,
+                "trailingComma": "es5",
+                "tabWidth": 4,
+                "semi": false,
+                "bracketSpacing": true,
+                "arrowParens": "avoid"
+            }
         ]
-    }
+    },
+    "plugins": ["prettier"]
 };
