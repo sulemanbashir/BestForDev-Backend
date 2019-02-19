@@ -9,38 +9,37 @@
   - `GET` request
   - returns an array with the categories and their id in `JSON` format (code: 200)
   ```json
-  {
-    [
-      {
-        "id": "1",
-        "name": "Category 1"
-      },
-      {
-        "id": "2",
-        "name": "Category 2"
-      },
-      ...
-    ]
-  }
+  [
+    {
+      "id": "1",
+      "name": "Category 1",
+      "links": 0
+    },
+    {
+      "id": "2",
+      "name": "Category 2",
+      "links": 2
+    },
+    ...
+  ]
   ```
 
 ### /category/:id
   - `GET` request
   - returns an array with all the approved links that belong to the received category id in `JSON` format (code: 200)
-  ```json
-  {
-    [
-      {
-        "id": "1",
-        "url": "https://www.bestfor.dev",
-        "title": "Best resources around the world",
-        "votes": "929" //should be calculated from the database
-      },
-      ...
-    ]
-  }
+  ```json  
+  [
+    {
+      "id": "1",
+      "url": "https://www.bestfor.dev",
+      "title": "Best resources around the world",
+      "votes": "929" //should be calculated from the database,
+      "creation_date": "2019-01-27 12:20:10"
+    },
+    ...
+  ]  
   ```
-- returns error message if the category id is not valid (code: 400)
+- returns error message if the category id is not valid `404 NOT FOUND`
 
 ### /add
   - `POST` request
@@ -57,7 +56,11 @@
     "id": "25456"
   }
   ```
-  - it will add the link to the database as a nonapproved link
+  - it will add the link to the database as a nonapproved link. The system will set a `creation_date` field to `current time` 
+  - If everything is fine and create dnew link code `201 CREATED`
+  - If missing parameters returns `400 BAD REQUEST` -> I have to check this one. I'm not sure.
+  - If the user is not logged in return a `401 UNAUTHORIZED`
+  - If the link already exists `409 CONFLICT` 
 
 ### /request-token
   - `GET` request
@@ -84,26 +87,34 @@
   - `GET` request
   - returns an array with all of the nonapproved links in `JSON` format (code: 200)
   ```json
-  {
-    [
-      {
-        "id": "45",
-        "url": "https://www.bestfor.dev",
-        "title": "Best resources around the world",
-        "category": "Awesome category"
-      },
-      ...
-    ]
-  }
+  [
+    {
+      "id": "45",
+      "url": "https://www.bestfor.dev",
+      "title": "Best resources around the world",
+      "category": "Awesome category"
+    },
+    ...
+  ]
   ```
-  - returns 0 if all links are approved (code: 400 ❔ )
+  - returns 0 if all links are approved. 
+  - If the API returns an empty array ```[]``` -> Code `200 SUCCESS` or If the API returns empty body -> Code `204 NO CONTENT`
+  - If missing parameters returns `400 BAD REQUEST`
+  - If the user is not logged returns a `401 UNAUTHORIZED`
+  - If the user is not allowed (it's not a moderator) returns a `403 FORBIDDEN` 
 
 ### /approve
   - `POST` request
   - takes the `id` of the link that will be approved in `JSON`
   - returns 200 if the database was updated with success
+  - If missing parameters returns `400 BAD REQUEST`
+  - If the user is not logged returns a `401 UNAUTHORIZED`
+  - If the user is not allowed (it's not a moderator) returns a `403 FORBIDDEN` 
 
 ### /delete
   - `POST` request
   - takes the `id` of the link that will be deleted in `JSON`
   - returns 200 if the database was updated with success
+  - If missing parameters returns `400 BAD REQUEST`
+  - If the user is not logged returns a `401 UNAUTHORIZED`
+  - If the user is not allowed (it's not a moderator) returns a `403 FORBIDDEN`
