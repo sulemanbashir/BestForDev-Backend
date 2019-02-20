@@ -1,21 +1,20 @@
 const express = require('express')
 const cors = require('cors')
 const twitterAPI = require('node-twitter-api')
-//const secret = require('secret')
-//const twitter = new twitterAPI({
-//     consumerKey: secret.consumerKey,
-//     consumerSecret: secret.consumerSecret,
-//     callback: secret.callback
-// });
-// knex = require('knex')({
-//     client: 'pg',
-//     connection: {
-//         host: '127.0.0.1',
-//         user: 'your_database_user',
-//         password: 'your_database_password',
-//         database: 'myapp_test',
-//     },
-// })
+const secrets = require('./controllers/secrets')
+const { consumerKey, consumerSecret, callbackURL, databaseURL } = secrets
+const twitter = new twitterAPI({
+    consumerKey: consumerKey,
+    consumerSecret: consumerSecret,
+    callback: callbackURL,
+})
+const db = require('knex')({
+    client: 'pg',
+    connection: {
+        connectionString: databaseURL,
+        ssl: true,
+    },
+})
 
 const app = express()
 app.use(express.json())
