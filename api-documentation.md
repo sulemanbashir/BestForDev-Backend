@@ -104,7 +104,7 @@
   - If the user is not allowed (it's not a moderator) returns a `403 FORBIDDEN` 
 
 ### /approve
-  - `POST` request
+  - `PUT` request
   - takes the `id` of the link that will be approved in `JSON`
   - returns 200 if the database was updated with success
   - If missing parameters returns `400 BAD REQUEST`
@@ -112,7 +112,7 @@
   - If the user is not allowed (it's not a moderator) returns a `403 FORBIDDEN` 
 
 ### /delete
-  - `POST` request
+  - `DELETE` request
   - takes the `id` of the link that will be deleted in `JSON`
   - returns 200 if the database was updated with success
   - If missing parameters returns `400 BAD REQUEST`
