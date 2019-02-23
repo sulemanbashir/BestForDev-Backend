@@ -15,7 +15,7 @@ What you will need is your own copy of the project in your local environment. Th
 This allow you to create branches in your repo to develop new features or fix some issues. Then, before opening a `pull request` you will be able to rebase your repo with the original repo to stay up to date of changes made on that repository. At this point you can open the `pull request` on Github.
 
 * Fork this repository
-* Clone your new repo in your local environment. `git clone https://github.com/[your user]/BestForDev-Backend.git' 
+* Clone your new repo in your local environment. `git clone https://github.com/[your user]/BestForDev-Backend.git` 
 * Add the original project as a remote. `git remote add upstream https://github.com/bestfordev/BestForDev-Backend.git`
 
 ### Developing
