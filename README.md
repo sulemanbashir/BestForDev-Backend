@@ -1,4 +1,6 @@
-# How to get this started
+# Best For Dev
+
+## How to get this started
 
 1. Make sure you have node.js installed
 2. Clone this repo
@@ -6,7 +8,7 @@
 4. `npm install`
 5. `npm start`
 
-# Wrokflow and contribution
+## Wrokflow and contribution
 If you want to contribute to this repository follow the instructions below.
 
 What you will need is your own copy of the project in your local environment. Then set the remote upstream to the original repository. 
