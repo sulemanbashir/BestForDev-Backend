@@ -2,8 +2,8 @@ commands.sql
 # Node modules folder.
 node_modules/
 
-# Private key folder.
-controllers/secrets.js
+# Environment variables.
+nodemon.json
 
 # PyCharm/IDEA files.
 .idea/

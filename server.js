@@ -2,16 +2,16 @@ const express = require('express')
 const cors = require('cors')
 const twitterAPI = require('node-twitter-api')
 const secrets = require('./controllers/secrets')
-const { consumerKey, consumerSecret, callbackURL, databaseURL } = secrets
+const { KEY, SECRET, DATABASE_URL } = process.env
 const twitter = new twitterAPI({
-    consumerKey: consumerKey,
-    consumerSecret: consumerSecret,
-    callback: callbackURL,
+    consumerKey: KEY,
+    consumerSecret: SECRET,
+    callback: 'http://localhost:3000/access-token',
 })
 const db = require('knex')({
     client: 'pg',
     connection: {
-        connectionString: databaseURL,
+        connectionString: DATABASE_URL,
         ssl: true,
     },
 })
