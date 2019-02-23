@@ -8,7 +8,7 @@
 4. `npm install`
 5. `npm start`
 
-## Wrokflow and contribution
+## Workflow and contribution
 If you want to contribute to this repository follow the instructions below.
 
 What you will need is your own copy of the project in your local environment. Then set the remote upstream to the original repository. 
