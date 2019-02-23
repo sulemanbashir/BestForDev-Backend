@@ -1,3 +1,22 @@
-node_modules/
 commands.sql
+# Node modules folder.
+node_modules/
+
+# Private key folder.
 controllers/secrets.js
+
+# PyCharm/IDEA files.
+.idea/
+*.iml
+
+# Visual Studio Code files.
+.vscode/
+.sonarlint/
+.history/
+
+# Other files
+README.old.md
+.DS_Store
+
+# Nohup logs.
+nohup.out
