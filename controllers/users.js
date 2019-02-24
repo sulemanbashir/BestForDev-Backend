@@ -2,9 +2,14 @@
 const db = require('../database/db-connection')
 
 module.exports = function(app) {
+    app.get('/', getUserRoot)
     app.get('/categories', getCategories)
     app.get('/category/:id', getCategory)
     app.post('/link/add', postLink)
+}
+
+function getUserRoot(req, res) {
+    res.sendFile('/Endpoints.html', { root: '.' })
 }
 
 function getCategories(req, res) {

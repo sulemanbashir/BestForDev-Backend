@@ -8,7 +8,7 @@
 4. `npm install`
 5. `npm start`
 
-## Wrokflow and contribution
+## Workflow and contribution
 If you want to contribute to this repository follow the instructions below.
 
 What you will need is your own copy of the project in your local environment. Then set the remote upstream to the original repository. 
@@ -16,10 +16,10 @@ This allow you to create branches in your repo to develop new features or fix so
 
 * Fork this repository
 * Clone your new repo in your local environment. `git clone https://github.com/[your user]/BestForDev-Backend.git` 
-* Add the original project as a remote. `git remote add upstream https://github.com/bestfordev/BestForDev-Backend.git`
+* Add the original project as a remote. Don't forget to move to the repo folder before executing this command. `git remote add upstream https://github.com/bestfordev/BestForDev-Backend.git`
 
 ### Developing
-To start modifying or adding code you need to create a new branch named `feature/my-new-feature` or `fix/my_fix`. You can do that with `git checkout -d feature/my-new-feature`
+To start modifying or adding code you need to create a new branch named `feature/my-new-feature` or `fix/my_fix`. You can do that with `git checkout -b feature/my-new-feature`
 
 Commit your changes to your new branch. When finished, create a pull request from your branch.
 
