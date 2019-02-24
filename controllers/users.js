@@ -1,27 +1,42 @@
 'use strict'
-const db = require('../database/db-connection')
+
+const quries = require('../database/quries')
 
 module.exports = function(app) {
     app.get('/', getUserRoot)
-    app.get('/categories', getCategories)
-    app.get('/category/:id', getCategory)
-    app.post('/link/add', postLink)
+    app.get('/categories', getCatgories)
+    app.get('/category/:id', isValidId, getCategoryTuple)
+    app.post('/link/add', addLink)
 }
 
 function getUserRoot(req, res) {
     res.sendFile('/Endpoints.html', { root: '.' })
 }
 
-function getCategories(req, res) {
-    res.status(200).send([])
+function getCatgories(req, res) {
+    quries.getAll('categories').then(categories => {
+        res.json(categories)
+    })
 }
 
-function getCategory(req, res) {
-    const id = req.params.id
-    res.status(200).send(id)
+function isValidId(req, res, next) {
+    if (!isNaN(req.params.id)) return next()
+    res.status(404).send('Invalid ID')
 }
 
-function postLink(req, res) {
-    const { url, title, category, id } = req.body
-    res.status(200).send('lonk posted')
+function getCategoryTuple(req, res, next) {
+    quries.getOne(req.params.id, 'categories').then(categories => {
+        if (categories) {
+            res.json(categories)
+        } else {
+            res.status(404).send('Not found')
+        }
+    })
+}
+
+function addLink(req, res, next) {
+    quries.create(req.body, 'links').then(links => {
+        res.json(links[0])
+        res.status(201).send('link created')
+    })
 }

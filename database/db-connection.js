@@ -1,10 +1,12 @@
-'use strict'
-const { DATABASE_URL } = process.env
+//Environment development or production
+const environment = 'development' || process.env.NODE_ENV
+//knex init file
+const config = require('../knexfile')
+//configration for environment
+const environmentConfig = config[environment]
+//include knex library
+const knex = require('knex')
+//connection
+const connection = knex(environmentConfig)
 
-const db = require('knex')({
-    client: 'pg',
-    connection: {
-        connectionString: DATABASE_URL,
-        ssl: true,
-    },
-})
+module.exports = connection
