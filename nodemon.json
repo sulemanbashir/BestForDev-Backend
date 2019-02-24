@@ -1,0 +1,7 @@
+{
+    "env": {
+        "KEY": "mht0qgJ6sJ9VIVpcBvift2K5m",
+        "SECRET": "Nj6OdoATqVMkMbgWu1EtcxHmTna0qltKF7VVenCofYiyKGwbwy",
+        "DATABASE_URL": "postgres://asjswctbybjycs:de5569a17ef21c6dfaa86b250c2a3b9829803cf15c724da34f10cdf9acd44e63@ec2-54-75-227-10.eu-west-1.compute.amazonaws.com:5432/d3stqgsa80gsv1"
+    }
+}
