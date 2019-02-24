@@ -9,7 +9,7 @@ module.exports = function(admin_app) {
 }
 
 function getAdminRoot(req, res) {
-    res.status(200).send(`Inside Admin`)
+    res.sendFile('/Endpoints.html', { root: '.' })
 }
 
 function getProposed(req, res) {
