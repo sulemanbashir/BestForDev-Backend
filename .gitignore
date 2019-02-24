@@ -1,3 +1,25 @@
-node_modules/
 commands.sql
-controllers/secrets.js
+# Node modules folder.
+node_modules/
+
+# Environment variables.
+nodemon.json
+
+# PyCharm/IDEA files.
+.idea/
+*.iml
+
+# Visual Studio Code files.
+.vscode/
+.sonarlint/
+.history/
+
+# Other files
+README.old.md
+.DS_Store
+
+# Nohup logs.
+nohup.out
+
+# Npm lock file
+package-lock.json
