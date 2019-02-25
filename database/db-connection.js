@@ -1,12 +1,22 @@
-//Environment development or production
-const environment = 'development' || process.env.NODE_ENV
-//knex init file
-const config = require('../knexfile')
-//configration for environment
-const environmentConfig = config[environment]
-//include knex library
-const knex = require('knex')
-//connection
-const connection = knex(environmentConfig)
+const DATABASE_URL = process.env.DATABASE_URL
+const knexConnection = require('knex')({
+    client: 'pg',
+    connection: {
+        connectionString: DATABASE_URL,
+        ssl: true,
+    },
+})
 
-module.exports = connection
+module.exports = {
+    getAll(table) {
+        return knexConnection(table)
+    },
+    getOne(id, table) {
+        return knexConnection(table)
+            .where('id', id)
+            .first()
+    },
+    create(data, table) {
+        return knexConnection(table).insert(data, '*')
+    },
+}

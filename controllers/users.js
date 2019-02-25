@@ -1,12 +1,12 @@
 'use strict'
 
-const quries = require('../database/quries')
+const quries = require('../database/db-connection')
 
 module.exports = function(app) {
     app.get('/', getUserRoot)
     app.get('/categories', getCatgories)
-    app.get('/category/:id', isValidId, getCategoryTuple)
-    app.post('/link/add', addLink)
+    app.get('/category/:id', getCategory)
+    app.post('/link/add', postLink)
 }
 
 function getUserRoot(req, res) {
@@ -19,24 +19,12 @@ function getCatgories(req, res) {
     })
 }
 
-function isValidId(req, res, next) {
-    if (!isNaN(req.params.id)) return next()
-    res.status(404).send('Invalid ID')
+function getCategory(req, res) {
+    const id = req.params.id
+    res.status(200).send(id)
 }
 
-function getCategoryTuple(req, res, next) {
-    quries.getOne(req.params.id, 'categories').then(categories => {
-        if (categories) {
-            res.json(categories)
-        } else {
-            res.status(404).send('Not found')
-        }
-    })
-}
-
-function addLink(req, res, next) {
-    quries.create(req.body, 'links').then(links => {
-        res.json(links[0])
-        res.status(201).send('link created')
-    })
+function postLink(req, res) {
+    const { url, title, category, id } = req.body
+    res.status(200).send('lonk posted')
 }
