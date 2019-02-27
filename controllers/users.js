@@ -1,10 +1,10 @@
 'use strict'
 
-const quries = require('../database/db-connection')
+const queries = require('../database/db-connection')
 
 module.exports = function(app) {
     app.get('/', getUserRoot)
-    app.get('/categories', getCatgories)
+    app.get('/categories', getCategories)
     app.get('/category/:id', getCategory)
     app.post('/link/add', postLink)
 }
@@ -13,7 +13,7 @@ function getUserRoot(req, res) {
     res.sendFile('/Endpoints.html', { root: '.' })
 }
 
-function getCatgories(req, res) {
+function getCategories(req, res) {
     quries.getAll('categories').then(categories => {
         res.json(categories)
     })
