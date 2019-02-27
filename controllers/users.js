@@ -14,7 +14,7 @@ function getUserRoot(req, res) {
 }
 
 function getCategories(req, res) {
-    quries.getAll('categories').then(categories => {
+    queries.getAll('categories').then(categories => {
         res.json(categories)
     })
 }
